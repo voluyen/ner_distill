@@ -1,0 +1,20 @@
+# environment
+.venv/
+__pycache__/
+*.pyc
+
+# outputs (checkpoints are large; results tables are regenerated with `python -m nerkd.results`)
+results/
+results_iwd/
+logs/
+cache/
+
+# upstream code kept locally for reference (see README)
+third_party/
+
+.DS_Store
+.vscode/
+.idea/
+
+# generative NER outputs
+results_llm/

@@ -1,0 +1,19 @@
+# Gemma 3 / MedGemma need a newer transformers than the encoder pipeline (nerkd pins 4.42.4).
+# Use a separate environment so the nerkd results stay reproducible:
+#   uv venv .venv-gemma --python 3.11 && uv pip install --python .venv-gemma/bin/python -r nerllm/requirements-gemma.txt
+#   PATH=$PWD/.venv-gemma/bin:$PATH bash scripts/run_llm.sh ...   (run_llm.sh uses .venv/bin if present; set it first on PATH)
+# The medgemma checkpoints are gated: accept the licence on the model pages and `huggingface-cli login`.
+torch==2.6.0  # transformers>=4.57 gemma3 masks need torch>=2.6
+transformers>=4.50,<5
+peft>=0.14
+accelerate
+huggingface_hub
+numpy
+sentencepiece
+protobuf
+datasets>=3.0,<4
+pyarrow<19  # newer pyarrow needs numpy>=2
+numpy<2
+# MTA: noun chunks / verb phrases
+spacy>=3.7,<3.9
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
